@@ -1,0 +1,15 @@
+{
+  "name": "@eddhurst/aoc2025",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Edd Hurst",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.7.3"
+  }
+}
