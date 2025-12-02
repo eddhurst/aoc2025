@@ -1,5 +1,8 @@
+
 import fs from "fs";
 import path from "path";
+import { log } from "../utils/log.ts";
+
 
 const rawData = fs.readFileSync(path.resolve(import.meta.dirname, "test.txt"), {
   encoding: "utf8",
@@ -54,7 +57,7 @@ const processTurn = (_data) => {
         clicksAtZero: _clicksAtZero,
         landsOnZero: _landsOnZero,
       };
-      console.info(spin);
+      log(JSON.stringify(spin));
 
       return spin;
     },
