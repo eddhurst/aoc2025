@@ -5,14 +5,14 @@ type Log = (message: string | number, type: "log" | "result" | "test") => void;
 const _log: Log = (message, type = "log") => {
   switch (type) {
     case "result":
-      console.log(`\n${chalk.blue("RESULT:")} ${message}`);
+      console.log(`\n${chalk.bgBlue("RESULT:")} ${message}`);
       break;
     case "test":
-      console.log(`${chalk.red("TESTING: ")} ${message}`);
+      console.log(`${chalk.bgRed("TESTING: ")} ${message}`);
       break;
     case "log":
     default:
-      console.log(message);
+      console.log(chalk.bgMagenta(message));
       break;
   }
 };
@@ -25,7 +25,16 @@ export const logResult = (message: string | number) => {
   _log(message, "result");
 };
 
+let shouldLog = true;
+
+export const disableLog = () => { shouldLog = false; }
+export const enableLog = () => { shouldLog = true; }
+
 export const logTest = (testValue: unknown) => {
+  if (!shouldLog) {
+    return;
+  }
+
   let message = testValue;
 
   if (typeof message === "object") {
